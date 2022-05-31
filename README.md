@@ -1,2 +1,3 @@
-# VIM-the-IDE
-Configuration for VIM / GVIM
+# VIM the IDE
+
+> Another vim configuration file with advanced features
