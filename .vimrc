@@ -31,11 +31,11 @@ set visualbell
 " Appearance
 " ----------
 
-" set guioptions-=r  
-" set guioptions-=R  
+" set guioptions-=r
+" set guioptions-=R
 
-" set guioptions-=m  
-set guioptions-=T  
+" set guioptions-=m
+set guioptions-=T
 
 set number
 set guioptions-=l
@@ -89,11 +89,11 @@ set expandtab           " Use spaces instead of tabs
 set smarttab            " Be smart when using tabs
 
 set shiftwidth=2        " 1 tab == 2 spaces
-set tabstop=2  
+set tabstop=2
 set autoindent
 set noexpandtab
 set mousehide           " Hide the mouse pointer while typing
-set showtabline=2  
+set showtabline=2
 
 set lbr                 " Linebreak on 500 characters
 set tw=500
@@ -105,7 +105,7 @@ set wrap                " Wrap lines
 set nofixendofline      " No new line of the file end
 
 hi LineNr guibg=bg      " Remove splitter bars
-set foldcolumn=2  
+set foldcolumn=2
 hi foldcolumn guibg=bg
 hi VertSplit guibg=bg guifg=bg
 
@@ -240,7 +240,7 @@ if has("gui")
   nnoremap <expr> <C-H> has("gui_running") ? ":promptrepl\<CR>" : "\<C-H>"
   inoremap <expr> <C-H> has("gui_running") ? "\<C-\>\<C-O>:promptrepl\<CR>" : "\<C-H>"
   cnoremap <expr> <C-H> has("gui_running") ? "\<C-\>\<C-C>:promptrepl\<CR>" : "\<C-H>"
-  
+
   noremap <M-Space> :simalt ~<CR>
   inoremap <M-Space> <C-O>:simalt ~<CR>
   cnoremap <M-Space> <C-C>:simalt ~<CR>
@@ -302,6 +302,7 @@ call plug#begin()
   Plug 'mg979/vim-visual-multi'
   Plug 'airblade/vim-gitgutter'
   Plug 'makerj/vim-pdf'
+	Plug 'jbgutierrez/vim-better-comments'
 
   " Plugins for Languages
 
@@ -340,10 +341,10 @@ let g:pencil_neutral_code_bg = 1
 " Better Whitespaces
 " ------------------
 
-let g:strip_whitespace_on_save=1  
-let g:strip_whitespace_confirm=0  
-let g:strip_only_modified_lines=1  
-let g:strip_whitelines_at_eof=1  
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+let g:strip_only_modified_lines=1
+let g:strip_whitelines_at_eof=1
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -351,7 +352,7 @@ let g:strip_whitelines_at_eof=1
 " Indent Guides
 " -------------
 
-let g:indent_guides_enable_on_vim_startup=1  
+let g:indent_guides_enable_on_vim_startup=1
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -424,9 +425,9 @@ let g:mucomplete#enable_auto_at_startup = 1
 " Better Whitespaces
 " ------------------
 
-let g:strip_whitespace_on_save=1  
-let g:strip_whitespace_confirm=0  
-let g:strip_only_modified_lines=1  
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+let g:strip_only_modified_lines=1
 let g:strip_whitelines_at_eof=1
 
 " ----------------------------------------------------------------------------------------------------------------
