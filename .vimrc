@@ -1,12 +1,3 @@
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                                                                                                                "
 "                                    ██╗   ██╗██╗███╗   ███╗██████╗  ██████╗                                     "
@@ -40,11 +31,11 @@ set visualbell
 " Appearance
 " ----------
 
-" set guioptions-=r
-" set guioptions-=R
+" set guioptions-=r  
+" set guioptions-=R  
 
-" set guioptions-=m
-set guioptions-=T
+" set guioptions-=m  
+set guioptions-=T  
 
 set number
 set guioptions-=l
@@ -98,11 +89,11 @@ set expandtab           " Use spaces instead of tabs
 set smarttab            " Be smart when using tabs
 
 set shiftwidth=2        " 1 tab == 2 spaces
-set tabstop=2
+set tabstop=2  
 set autoindent
 set noexpandtab
 set mousehide           " Hide the mouse pointer while typing
-set showtabline=2
+set showtabline=2  
 
 set lbr                 " Linebreak on 500 characters
 set tw=500
@@ -114,7 +105,7 @@ set wrap                " Wrap lines
 set nofixendofline      " No new line of the file end
 
 hi LineNr guibg=bg      " Remove splitter bars
-set foldcolumn=2
+set foldcolumn=2  
 hi foldcolumn guibg=bg
 hi VertSplit guibg=bg guifg=bg
 
@@ -249,7 +240,7 @@ if has("gui")
   nnoremap <expr> <C-H> has("gui_running") ? ":promptrepl\<CR>" : "\<C-H>"
   inoremap <expr> <C-H> has("gui_running") ? "\<C-\>\<C-O>:promptrepl\<CR>" : "\<C-H>"
   cnoremap <expr> <C-H> has("gui_running") ? "\<C-\>\<C-C>:promptrepl\<CR>" : "\<C-H>"
-
+  
   noremap <M-Space> :simalt ~<CR>
   inoremap <M-Space> <C-O>:simalt ~<CR>
   cnoremap <M-Space> <C-C>:simalt ~<CR>
@@ -309,7 +300,6 @@ call plug#begin()
   Plug 'easymotion/vim-easymotion'
   Plug 'sstallion/vim-cursorline'
   Plug 'mg979/vim-visual-multi'
-  Plug 'rhysd/vim-clang-format'
   Plug 'airblade/vim-gitgutter'
   Plug 'makerj/vim-pdf'
 
@@ -319,6 +309,8 @@ call plug#begin()
   Plug 'vim-latex/vim-latex'
   Plug 'gabrielelana/vim-markdown'
   Plug 'nfischer/vim-ohm'
+  Plug 'vim-scripts/bnf.vim'
+  Plug 'vim-scripts/ebnf.vim'
   Plug 'aklt/plantuml-syntax'
   Plug 'othree/html5.vim'
   Plug 'juleswang/css.vim'
@@ -326,6 +318,8 @@ call plug#begin()
   Plug 'pangloss/vim-javascript'
   Plug 'iosmanthus/vim-nasm'
 call plug#end()
+
+au bufreadpre,bufnewfile *.bnf set ft=bnf
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -346,10 +340,10 @@ let g:pencil_neutral_code_bg = 1
 " Better Whitespaces
 " ------------------
 
-let g:strip_whitespace_on_save=1
-let g:strip_whitespace_confirm=0
-let g:strip_only_modified_lines=1
-let g:strip_whitelines_at_eof=1
+let g:strip_whitespace_on_save=1  
+let g:strip_whitespace_confirm=0  
+let g:strip_only_modified_lines=1  
+let g:strip_whitelines_at_eof=1  
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -357,7 +351,7 @@ let g:strip_whitelines_at_eof=1
 " Indent Guides
 " -------------
 
-let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_enable_on_vim_startup=1  
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -430,9 +424,9 @@ let g:mucomplete#enable_auto_at_startup = 1
 " Better Whitespaces
 " ------------------
 
-let g:strip_whitespace_on_save=1
-let g:strip_whitespace_confirm=0
-let g:strip_only_modified_lines=1
+let g:strip_whitespace_on_save=1  
+let g:strip_whitespace_confirm=0  
+let g:strip_only_modified_lines=1  
 let g:strip_whitelines_at_eof=1
 
 " ----------------------------------------------------------------------------------------------------------------
@@ -461,28 +455,3 @@ endfunction
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
-
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-
-" MUComplete
-" ----------
-
-let g:mucomplete#enable_auto_at_startup = 1
-
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-
-" CLang Format
-" ------------
-"
-" https://vimawesome.com/plugin/vim-clang-format
-
-let g:clang_format#code_style = "google"
-
-let g:clang_format#style_options = {
-  \ "AccessModifierOffset" : -2,
-  \ "AllowShortIfStatementsOnASingleLine" : "true",
-  \ "AlwaysBreakTemplateDeclarations" : "true",
-  \ "Standard" : "C++11",
-  \ "BreakBeforeBraces" : "Stroustrup"}
