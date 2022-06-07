@@ -307,6 +307,7 @@ call plug#begin()
 
   " Plugins for Languages
 
+  Plug 'dzeban/vim-log-syntax'
   Plug 'lervag/vimtex'
   Plug 'vim-latex/vim-latex'
   Plug 'gabrielelana/vim-markdown'
