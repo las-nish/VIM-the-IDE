@@ -318,11 +318,14 @@ call plug#begin()
   Plug 'juleswang/css.vim'
   Plug 'cakebaker/scss-syntax.vim'
   Plug 'pangloss/vim-javascript'
+  Plug 'vim-scripts/c.vim'
   Plug 'iosmanthus/vim-nasm'
 
   " Plugins for Language Options
 
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+  Plug 'vim-scripts/log.vim'
+  Plug 'vim-scripts/RTL'
 call plug#end()
 
 " au bufreadpre,bufnewfile *.bnf set ft=bnf
@@ -446,14 +449,27 @@ let g:strip_whitelines_at_eof=1
 let g:lightline = {
   \ 'colorscheme': 'powerline',
   \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \   'left': [ ['mode', 'paste'],
+  \             ['gitbranch', 'fugitive', 'readonly', 'filename', 'modified'] ],
+  \   'right': [ [ 'lineinfo' ], ['percent'] ]
+  \ },
+  \ 'component': {
+  \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
+  \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+  \   'fugitive': '%{exists("*FugitiveHead")?FugitiveHead():""}'
   \ },
   \ 'component_function': {
   \   'gitbranch': 'FugitiveHead',
   \   'fileformat': 'LightlineFileformat',
   \   'filetype': 'LightlineFiletype',
   \ },
+  \ 'component_visible_condition': {
+  \   'readonly': '(&filetype!="help"&& &readonly)',
+  \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+  \   'fugitive': '(exists("*FugitiveHead") && ""!=FugitiveHead())'
+  \ },
+  \ 'separator': { 'left': ' ', 'right': ' ' },
+  \ 'subseparator': { 'left': ' ', 'right': ' ' }
   \ }
 
 function! LightlineFileformat()
