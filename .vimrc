@@ -304,7 +304,6 @@ call plug#begin()
   Plug 'makerj/vim-pdf'
   Plug 'jbgutierrez/vim-better-comments'
   Plug 'ryanoasis/vim-devicons'
-  Plug '907th/vim-auto-save'
 
   " Plugins for Languages
 
@@ -460,13 +459,3 @@ endfunction
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
-
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-
-" Auto Save
-" ---------
-
-let g:auto_save = 1
-let g:auto_save_silent = 0
-let g:auto_save_events = ["InsertLeave", "TextChanged"]
