@@ -319,6 +319,10 @@ call plug#begin()
   Plug 'cakebaker/scss-syntax.vim'
   Plug 'pangloss/vim-javascript'
   Plug 'iosmanthus/vim-nasm'
+
+  " Plugins for Language Options
+
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 " au bufreadpre,bufnewfile *.bnf set ft=bnf
@@ -459,3 +463,21 @@ endfunction
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
+
+" ----------------------------------------------------------------------------------------------------------------
+" ----------------------------------------------------------------------------------------------------------------
+
+" Markdown Live Preview
+" ---------------------
+
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = ''
+let g:mkdp_echo_preview_url = 1
+let g:mkdp_page_title = '「${name}」'
+let g:mkdp_filetypes = ['markdown']
+" let g:mkdp_theme = 'light'
+" let g:mkdp_browser = '/usr/bin/epiphany-browser'
