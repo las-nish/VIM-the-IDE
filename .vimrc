@@ -451,7 +451,7 @@ let g:lightline = {
   \ 'colorscheme': 'powerline',
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
-  \             ['gitbranch', 'fugitive', 'readonly', 'filename', 'modified'] ],
+  \             ['gitbranch', 'readonly', 'filename', 'modified'] ],
   \   'right': [ [ 'lineinfo' ], ['percent'] ]
   \ },
   \ 'component': {
