@@ -292,6 +292,10 @@ call plug#begin()
   Plug 'fergdev/vim-cursor-hist'
   Plug 'tpope/vim-fugitive'
   Plug 'itchyny/lightline.vim'
+  Plug 'mgee/lightline-bufferline'
+  Plug 'niklaas/lightline-gitdiff'
+  Plug 'sinetoami/lightline-hunks'
+  Plug 'Akin909/lightline-statuslinetabs'
   Plug 'majutsushi/tagbar'
   Plug 'GlancingMind/vim-baker'
   Plug 'yuttie/comfortable-motion.vim'
@@ -312,8 +316,6 @@ call plug#begin()
   Plug 'vim-latex/vim-latex'
   Plug 'gabrielelana/vim-markdown'
   Plug 'nfischer/vim-ohm'
-  Plug 'vim-scripts/bnf.vim'
-  Plug 'vim-scripts/ebnf.vim'
   Plug 'aklt/plantuml-syntax'
   Plug 'othree/html5.vim'
   Plug 'juleswang/css.vim'
@@ -329,7 +331,7 @@ call plug#begin()
   Plug 'vim-scripts/RTL'
 call plug#end()
 
-" au bufreadpre,bufnewfile *.bnf set ft=bnf
+autocmd BufNewFile,BufRead *.bnf,*.ebnf set syntax=ohm
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -451,18 +453,32 @@ let g:lightline = {
   \ 'colorscheme': 'powerline',
   \ 'active': {
   \   'left': [ ['mode', 'paste'],
-  \             ['gitbranch', 'readonly', 'filename', 'modified'] ],
-  \   'right': [ [ 'lineinfo' ], ['percent'] ]
+  \             ['separator'],
+  \             ['gitbranch', 'readonly', 'filename', 'modified'],
+  \             ['bufferbefore', 'buffercurrent', 'bufferafter'],    ],
+  \   'right': [ ['statuslinetabs'], ['lineinfo'], ['percent'] ]
   \ },
   \ 'component': {
   \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
   \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-  \   'fugitive': '%{exists("*FugitiveHead")?FugitiveHead():""}'
+  \   'fugitive': '%{exists("*FugitiveHead")?FugitiveHead():""}',
+  \   'separator': '',
+  \ },
+  \ 'component_expand': {
+  \   'buffercurrent': 'lightline#buffer#buffercurrent',
+  \   'bufferbefore': 'lightline#buffer#bufferbefore',
+  \   'bufferafter': 'lightline#buffer#bufferafter',
+  \ },
+  \ 'component_type': {
+  \   'buffercurrent': 'tabsel',
+  \   'bufferbefore': 'raw',
+  \   'bufferafter': 'raw',
   \ },
   \ 'component_function': {
   \   'gitbranch': 'FugitiveHead',
   \   'fileformat': 'LightlineFileformat',
   \   'filetype': 'LightlineFiletype',
+  \   'bufferinfo': 'lightline#buffer#bufferinfo',
   \ },
   \ 'component_visible_condition': {
   \   'readonly': '(&filetype!="help"&& &readonly)',
@@ -480,6 +496,24 @@ endfunction
 function! LightlineFiletype()
   return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : 'no ft') : ''
 endfunction
+
+let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_readonly_icon = ''
+let g:lightline_buffer_modified_icon = '✭'
+let g:lightline_buffer_git_icon = ' '
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '◀ '
+let g:lightline_buffer_expand_right_icon = ' ▶'
+let g:lightline_buffer_active_buffer_left_icon = ''
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = '  '
+
+let g:lightline_buffer_enable_devicons = 1
+let g:lightline_buffer_show_bufnr = 1
+let g:lightline_buffer_maxflen = 30
+let g:lightline_buffer_maxfextlen = 3
+let g:lightline_buffer_minflen = 16
+let g:lightline_buffer_minfextlen = 3
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
