@@ -35,3 +35,10 @@
 | CTRL + W and DOWN | Move to the bottom split screen |
 | CTRL + W and LEFT | Move to the left split screen |
 | CTRL + W and RIGHT | Move to the right split screen |
+| CTRL + D | Moves cursor & screen down ½ page |
+| CTRL + U | Moves cursor & screen up ½ page|
+| CTRL + E | Moves screen down one line |
+| CTRL + Y | Moves screen up one line |
+| z and z | Moves current line to top of screen |
+| z and t | Moves current line to center of screen |
+| z and b | Moves current line to bottom |
