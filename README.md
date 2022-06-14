@@ -1,6 +1,6 @@
 # VIM the IDE
 
-> Another vim configuration file with advanced features
+> My vim configuration file with advanced features
 
 ## Customized Shortcut Keys
 
