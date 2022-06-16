@@ -318,6 +318,7 @@ call plug#begin()
   Plug 'jbgutierrez/vim-better-comments'
   Plug 'rhysd/vim-clang-format'
   Plug 'dpelle/vim-languagetool'
+  Plug 'scrooloose/syntastic'
   Plug 'natebosch/vim-lsc'
   Plug 'natebosch/vim-lsc-dart'
 
@@ -571,10 +572,6 @@ let g:mkdp_theme = 'light'
 " ------------
 
 let g:clang_format#detect_style_file=1
-let g:clang_format#auto_format_on_insert_leave=1
-let g:clang_format#auto_formatexpr=1
-
-autocmd FileType c,h ClangFormatAutoEnable
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -594,21 +591,25 @@ let g:syntastic_check_on_wq = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:syntastic_aggregate_errors = 1
 
-let g:syntastic_h_checkers = ['clang-check']
-let g:syntastic_c_checkers = ['clang-check']
-let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_checkers = ['clang_check']
+let g:syntastic_c_compiler = 'clang'
 let g:syntastic_c_compiler_options = '-std=c99'
+let g:syntastic_c_check_header = 1
+let g:syntastic_c_auto_refresh_includes = 1
+
+let g:syntastic_cpp_checkers = ['clang_check']
+let g:syntastic_cpp_compiler = 'clang'
+let g:syntastic_cpp_check_header = 1
+let g:syntastic_cpp_auto_refresh_includes = 1
 
 let g:syntastic_cs_checkers = ['OmniSharp']
 let g:syntastic_cs_compiler = 'dotnet'
 
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
+let g:syntastic_dart_checkers = ['dartanalyzer']
+let g:syntastic_dart_compiler = 'dart'
 
-" Vim LSP
-" -------
-
-"let g:lsc_auto_map = v:true
+let g:syntastic_sass_checkers = ['sass']
+let g:syntastic_scss_checkers = ['sass']
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -622,8 +623,11 @@ let g:dart_style_guide = 2
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
 
+
 " Omni Sharp
 " ----------
+
+let g:OmniSharp_server_path = '/sft/omnisharp-linux-x64/run'
 
 let g:OmniSharp_popup_position = 'peek'
 
