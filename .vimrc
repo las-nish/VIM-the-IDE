@@ -70,7 +70,8 @@ set showcmd             " Display incomplete commands
 " Code Editor
 " -----------
 
-set guifont=DroidSansMono\ Nerd\ Font\ 11
+set guifont=JetBrains\ Mono\ 10.5
+" set guifont=DroidSansMono\ Nerd\ Font\ 11
 
 " set invlist           " Change whitespaces
 " set spell             " Spell check
@@ -272,11 +273,19 @@ call plug#begin()
   " Plugins for Themes
 
   Plug 'reedes/vim-colors-pencil'
+  Plug 'rafalbromirski/vim-aurora'
+  Plug 'nanotech/jellybeans.vim'
+  Plug 'morhetz/gruvbox'
+  Plug 'rafalbromirski/vim-aurora'
+  Plug 'nlknguyen/papercolor-theme'
+
+  " Plugins for Custom Plugin Themes
+
+  Plug 'shinchu/lightline-gruvbox.vim'
 
   " Plugins for Customization
 
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'nathanaelkane/vim-indent-guides'
   Plug 'frazrepo/vim-rainbow'
 
   " Plugins for Productivity
@@ -307,21 +316,29 @@ call plug#begin()
   Plug 'airblade/vim-gitgutter'
   Plug 'makerj/vim-pdf'
   Plug 'jbgutierrez/vim-better-comments'
-  Plug 'ryanoasis/vim-devicons'
+  Plug 'rhysd/vim-clang-format'
+  Plug 'dpelle/vim-languagetool'
+  Plug 'natebosch/vim-lsc'
+  Plug 'natebosch/vim-lsc-dart'
 
   " Plugins for Languages
 
   Plug 'dzeban/vim-log-syntax'
+  Plug 'gisphm/vim-gitignore'
   Plug 'lervag/vimtex'
   Plug 'vim-latex/vim-latex'
   Plug 'gabrielelana/vim-markdown'
   Plug 'nfischer/vim-ohm'
   Plug 'aklt/plantuml-syntax'
+  Plug 'leshill/vim-json'
   Plug 'othree/html5.vim'
   Plug 'juleswang/css.vim'
   Plug 'cakebaker/scss-syntax.vim'
   Plug 'pangloss/vim-javascript'
   Plug 'vim-scripts/c.vim'
+  Plug 'dart-lang/dart-vim-plugin'
+  Plug 'omnisharp/omnisharp-vim'
+  Plug 'thosakwe/vim-flutter'
   Plug 'iosmanthus/vim-nasm'
 
   " Plugins for Language Options
@@ -339,12 +356,26 @@ autocmd BufNewFile,BufRead *.bnf,*.ebnf set syntax=ohm
 " Set Appearance by Plugins
 " -------------------------
 
-colorscheme pencil
-set background=dark
+" colorscheme pencil
+" set background=dark
+" let g:pencil_higher_contrast_ui = 1
+" let g:pencil_neutral_headings = 1
+" let g:pencil_neutral_code_bg = 1
 
-let g:pencil_higher_contrast_ui = 1
-let g:pencil_neutral_headings = 1
-let g:pencil_neutral_code_bg = 1
+" set background=dark
+" colorscheme aurora
+
+" colorscheme jellybeans
+" let g:jellybeans_use_term_italics = 1
+
+" set background=dark
+" colorscheme gruvbox
+
+" set background=dark
+" colorscheme aurora
+
+set background=dark
+colorscheme PaperColor
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -371,9 +402,9 @@ let g:indent_guides_enable_on_vim_startup=1
 " Rainbow Brackets
 " ----------------
 
-" let g:rainbow_active = 1
+" au FileType md,oe,c,h call rainbow#load()
 
-au FileType md,oe call rainbow#load()
+let g:rainbow_active = 1
 autocmd VimEnter * RainbowToggle
 
 " ----------------------------------------------------------------------------------------------------------------
@@ -527,8 +558,90 @@ let g:mkdp_refresh_slow = 0
 let g:mkdp_command_for_global = 0
 let g:mkdp_open_to_the_world = 0
 let g:mkdp_open_ip = ''
+let g:mkdp_browser = '/usr/bin/epiphany-browser'
 let g:mkdp_echo_preview_url = 1
 let g:mkdp_page_title = '「${name}」'
 let g:mkdp_filetypes = ['markdown']
-" let g:mkdp_theme = 'light'
-" let g:mkdp_browser = '/usr/bin/epiphany-browser'
+let g:mkdp_theme = 'light'
+
+" ----------------------------------------------------------------------------------------------------------------
+" ----------------------------------------------------------------------------------------------------------------
+
+" Clang Format
+" ------------
+
+let g:clang_format#detect_style_file=1
+let g:clang_format#auto_format_on_insert_leave=1
+let g:clang_format#auto_formatexpr=1
+
+autocmd FileType c,h ClangFormatAutoEnable
+
+" ----------------------------------------------------------------------------------------------------------------
+" ----------------------------------------------------------------------------------------------------------------
+
+" Syntastic
+" ---------
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:ycm_show_diagnostics_ui = 0
+let g:syntastic_aggregate_errors = 1
+
+let g:syntastic_h_checkers = ['clang-check']
+let g:syntastic_c_checkers = ['clang-check']
+let g:syntastic_c_compiler = 'gcc'
+let g:syntastic_c_compiler_options = '-std=c99'
+
+let g:syntastic_cs_checkers = ['OmniSharp']
+let g:syntastic_cs_compiler = 'dotnet'
+
+" ----------------------------------------------------------------------------------------------------------------
+" ----------------------------------------------------------------------------------------------------------------
+
+" Vim LSP
+" -------
+
+"let g:lsc_auto_map = v:true
+
+" ----------------------------------------------------------------------------------------------------------------
+" ----------------------------------------------------------------------------------------------------------------
+
+" Vim Dart
+" --------
+
+let dart_html_in_string=v:true
+let g:dart_style_guide = 2
+
+" ----------------------------------------------------------------------------------------------------------------
+" ----------------------------------------------------------------------------------------------------------------
+
+" Omni Sharp
+" ----------
+
+let g:OmniSharp_popup_position = 'peek'
+
+let g:OmniSharp_popup_options = {
+\ 'highlight': 'Normal',
+\ 'padding': [0],
+\ 'border': [1],
+\ 'borderchars': ['─', '│', '─', '│', '╭', '╮', '╯', '╰'],
+\ 'borderhighlight': ['ModeMsg']
+\}
+
+let g:OmniSharp_popup_mappings = {
+\ 'sigNext': '<C-n>',
+\ 'sigPrev': '<C-p>',
+\ 'pageDown': ['<C-f>', '<PageDown>'],
+\ 'pageUp': ['<C-b>', '<PageUp>']
+\}
+
+let g:OmniSharp_highlight_groups = {
+\ 'ExcludedCode': 'NonText'
+\}
