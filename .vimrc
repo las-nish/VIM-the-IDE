@@ -286,7 +286,6 @@ call plug#begin()
   " Plugins for Customization
 
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'frazrepo/vim-rainbow'
 
   " Plugins for Productivity
 
@@ -319,8 +318,11 @@ call plug#begin()
   Plug 'rhysd/vim-clang-format'
   Plug 'dpelle/vim-languagetool'
   Plug 'scrooloose/syntastic'
+  Plug 'gcorne/vim-sass-lint'
   Plug 'natebosch/vim-lsc'
   Plug 'natebosch/vim-lsc-dart'
+  Plug 'dkprice/vim-easygrep'
+  Plug 'gorodinskiy/vim-coloresque'
 
   " Plugins for Languages
 
@@ -333,8 +335,9 @@ call plug#begin()
   Plug 'aklt/plantuml-syntax'
   Plug 'leshill/vim-json'
   Plug 'othree/html5.vim'
-  Plug 'juleswang/css.vim'
+  Plug 'hail2u/vim-css3-syntax'
   Plug 'cakebaker/scss-syntax.vim'
+  Plug 'vim-scripts/Sass'
   Plug 'pangloss/vim-javascript'
   Plug 'vim-scripts/c.vim'
   Plug 'dart-lang/dart-vim-plugin'
@@ -357,11 +360,11 @@ autocmd BufNewFile,BufRead *.bnf,*.ebnf set syntax=ohm
 " Set Appearance by Plugins
 " -------------------------
 
-" colorscheme pencil
-" set background=dark
-" let g:pencil_higher_contrast_ui = 1
-" let g:pencil_neutral_headings = 1
-" let g:pencil_neutral_code_bg = 1
+colorscheme pencil
+set background=dark
+let g:pencil_higher_contrast_ui = 1
+let g:pencil_neutral_headings = 1
+let g:pencil_neutral_code_bg = 1
 
 " set background=dark
 " colorscheme aurora
@@ -373,10 +376,7 @@ autocmd BufNewFile,BufRead *.bnf,*.ebnf set syntax=ohm
 " colorscheme gruvbox
 
 " set background=dark
-" colorscheme aurora
-
-set background=dark
-colorscheme PaperColor
+" colorscheme PaperColor
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -384,29 +384,10 @@ colorscheme PaperColor
 " Better Whitespaces
 " ------------------
 
-let g:strip_whitespace_on_save=1  
-let g:strip_whitespace_confirm=0  
-let g:strip_only_modified_lines=1  
-let g:strip_whitelines_at_eof=1  
-
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-
-" Indent Guides
-" -------------
-
-let g:indent_guides_enable_on_vim_startup=1  
-
-" ----------------------------------------------------------------------------------------------------------------
-" ----------------------------------------------------------------------------------------------------------------
-
-" Rainbow Brackets
-" ----------------
-
-" au FileType md,oe,c,h call rainbow#load()
-
-let g:rainbow_active = 1
-autocmd VimEnter * RainbowToggle
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
+let g:strip_only_modified_lines=1
+let g:strip_whitelines_at_eof=1
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
@@ -608,8 +589,8 @@ let g:syntastic_cs_compiler = 'dotnet'
 let g:syntastic_dart_checkers = ['dartanalyzer']
 let g:syntastic_dart_compiler = 'dart'
 
-let g:syntastic_sass_checkers = ['sass']
-let g:syntastic_scss_checkers = ['sass']
+let g:syntastic_sass_checkers=["sasslint"]
+let g:syntastic_scss_checkers=["sasslint"]
 
 " ----------------------------------------------------------------------------------------------------------------
 " ----------------------------------------------------------------------------------------------------------------
