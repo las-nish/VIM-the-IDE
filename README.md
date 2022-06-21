@@ -56,3 +56,12 @@
 | <Leader>vr  | Perform a global search on the word under the cursor and prompt for a pattern with which to replace it. |
 | <Leader>vo  | Select the files to search in and set grep options |
 | <Leader>vy* | Invoke any option from the options explorer, where * is the shortcut for that option. |
+
+## Plugin Command
+
+| Command | Action
+| -- | -- |
+| PlantumlOpen | Preview plantUML diagram in the Web Browser |
+| PlantumlStop | Stop planmtUML preview |
+| MarkdownPreview | Start markdown preview in the web browser |
+| MarkdownPreviewStop | Stop markdown preview |
