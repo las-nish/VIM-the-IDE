@@ -323,6 +323,8 @@ call plug#begin()
   Plug 'natebosch/vim-lsc-dart'
   Plug 'dkprice/vim-easygrep'
   Plug 'gorodinskiy/vim-coloresque'
+  Plug 'weirongxu/plantuml-previewer.vim'
+  Plug 'tyru/open-browser.vim'
 
   " Plugins for Languages
 
