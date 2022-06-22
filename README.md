@@ -26,6 +26,10 @@
 | CTRL + H | Replace |
 | CTRL + SHIFT + T | Gnome Terminal |
 | CTRL + SHIFT + b | Make |
+| ALT + j | Change split screen size from left |
+| ALT + l | Change split screen size from right |
+| ALT + i | Change split screen size from up |
+| ALT + k | Change split screen size from down |
 
 ## Default Shortcut Keys
 
@@ -42,6 +46,7 @@
 | z and z | Moves current line to top of screen |
 | z and t | Moves current line to center of screen |
 | z and b | Moves current line to bottom |
+| CTRL + W and = | Reset Split Screens |
 
 ## Default Shortcut Keys from Plugins
 
