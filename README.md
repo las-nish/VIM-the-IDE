@@ -65,3 +65,6 @@
 | PlantumlStop | Stop planmtUML preview |
 | MarkdownPreview | Start markdown preview in the web browser |
 | MarkdownPreviewStop | Stop markdown preview |
+
+> Note:
+> Replace `plantuml.jar` in the Plant UML Preview plugin with the latest one

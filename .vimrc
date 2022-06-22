@@ -31,16 +31,14 @@ set visualbell
 " Appearance
 " ----------
 
-" set guioptions-=r  
-" set guioptions-=R  
-
-" set guioptions-=m  
-set guioptions-=T  
+set guioptions+=T " Tool Bar
+set guioptions+=t " Tear Menu
+set guioptions+=R " Right hand scroll bar
+set guioptions+=b " Bottom scroll bar
+set guioptions+=m " Menu Bar  
+set guioptions-=L " Left hand scroll bar
 
 set number
-set guioptions-=l
-set guioptions-=L
-
 set laststatus=2
 
 set vb t_vb=      " stop beeping or flashing the screen
