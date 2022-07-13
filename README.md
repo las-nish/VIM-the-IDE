@@ -66,10 +66,13 @@
 
 | Command | Action
 | -- | -- |
-| PlantumlOpen | Preview plantUML diagram in the Web Browser |
-| PlantumlStop | Stop planmtUML preview |
-| MarkdownPreview | Start markdown preview in the web browser |
-| MarkdownPreviewStop | Stop markdown preview |
+| `PlantumlOpen` | Preview plantUML diagram in the Web Browser |
+| `PlantumlStop` | Stop planmtUML preview |
+| `MarkdownPreview` | Start markdown preview in the web browser |
+| `MarkdownPreviewStop` | Stop markdown preview |
+| `Bookmark [NAME]` | Create NERDTree Bookmark |
+| `ClearBookmarks [NAME]` | Clear selected bookmark |
+| `ClearAllBookmarks` | Clear all NERDTree Bookmarks |
 
 > Note:
 > Replace `plantuml.jar` in the Plant UML Preview plugin with the latest one
